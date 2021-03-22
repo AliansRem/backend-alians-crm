@@ -6,6 +6,8 @@ from rest_framework.authtoken import views
 
 endpoints = [
     path('auth/', views.obtain_auth_token),
+    path('core/', include('core.urls')),
+    path('dosimetria/', include('dosimetria.urls')),
 ]
 
 urlpatterns = [
