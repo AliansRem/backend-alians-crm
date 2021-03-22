@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
 
-
+    'core.apps.CoreConfig',
+    'dosimetria.apps.DosimetriaConfig',
 ]
 
 MIDDLEWARE = [
