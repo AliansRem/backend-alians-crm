@@ -1,0 +1,28 @@
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=user
+Group=www-data
+
+Environment="SECRET_KEY=your_secret_key"
+Environment="ALLOWED_HOSTS=localhost,127.0.0.1,your_hostname"
+Environment="DEBUG=0"
+
+Environment="DB_NAME=postgres"
+Environment="DB_USER=postgres"
+Environment="DB_PASSWORD="
+Environment="DB_PORT=localhost"
+Environment="DB_PORT=5432"
+
+Environment="CORS_ALLOWED_ORIGINS=*"
+
+WorkingDirectory=/home/user/backend-alians-crm/src
+ExecStart=/home/user/backend-alians-crm/venv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          config.wsgi:application
+
