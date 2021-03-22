@@ -13,7 +13,7 @@ Environment="DEBUG=0"
 
 Environment="DB_NAME=postgres"
 Environment="DB_USER=postgres"
-Environment="DB_PASSWORD="
+Environment="DB_PASSWORD=123456"
 Environment="DB_PORT=localhost"
 Environment="DB_PORT=5432"
 
@@ -25,4 +25,7 @@ ExecStart=/home/user/backend-alians-crm/venv/bin/gunicorn \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
           config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
 
